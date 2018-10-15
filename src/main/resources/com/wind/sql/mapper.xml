@@ -27,5 +27,8 @@
         WHERE t.username = #{username} and t.password = #{password}
     </select>
 
+    <select id="getAll" resultMap="resultMap">
+        SELECT * from test;
+    </select>
 
 </mapper>
