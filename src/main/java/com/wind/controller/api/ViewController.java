@@ -55,4 +55,8 @@ public class ViewController {
         return "success";
     }
 
+    @RequestMapping("/toAbout")
+    public String toAbout() {
+        return "redirect_vue:/about"; // vue前台路由，在axios中添加拦截器，拦截该串，解析/about路由
+    }
 }

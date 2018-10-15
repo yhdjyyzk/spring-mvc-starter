@@ -14,3 +14,11 @@
   }
   ```
 * build vue代码之后，将static下面的文件拷贝至webapp的下即可。  
+* redirect 解决方案
+```java
+    @RequestMapping("/toAbout")
+    public String toAbout() {
+        return "redirect_vue:/about"; // vue前台路由，在axios中添加拦截器，拦截该串，解析/about路由
+    }
+```
+vue前台路由，在axios中添加拦截器，拦截该串，解析/about路由，由vue-router控制前台路由。
