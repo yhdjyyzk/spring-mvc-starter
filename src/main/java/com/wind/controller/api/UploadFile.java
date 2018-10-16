@@ -28,10 +28,10 @@ public class UploadFile {
     @RequestMapping("/upload")
     @ResponseBody
     public String uploadFile(@RequestParam("file") MultipartFile file) {
-        if(!file.isEmpty()) {
+        if (!file.isEmpty()) {
             //获取文件类型
             String contentType = file.getContentType();
-            if(!contentType.equals("")) {
+            if (!contentType.equals("")) {
                 //可以对文件类型进行检查
             }
             //获取input域的name属性
@@ -43,7 +43,7 @@ public class UploadFile {
             System.out.println(extension);
             //获取文件大小，单位字节
             long site = file.getSize();
-            if(site > MAX_FILE_SISE) {
+            if (site > MAX_FILE_SISE) {
                 //可以对文件大小进行检查
             }
             //构造文件上传后的文件绝对路径，这里取系统时间戳＋文件名作为文件名
@@ -55,8 +55,7 @@ public class UploadFile {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        else {
+        } else {
             return "error";
         }
 
