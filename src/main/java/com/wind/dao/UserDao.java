@@ -10,6 +10,8 @@ import java.util.List;
 public interface UserDao {
     User findByUsernameAndPwd(@Param("username") String username, @Param("password") String password);
 
+    User findByUsername(String username);
+
     List<User> find(User user);
 
     void add(User user);

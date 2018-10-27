@@ -2,6 +2,7 @@ package com.wind.controller.api;
 import com.wind.entity.User;
 import com.wind.service.UserService;
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class ViewController {
 
     private Logger logger = Logger.getLogger(ViewController.class);
@@ -59,5 +60,11 @@ public class ViewController {
     @ResponseBody
     public String toAbout() {
         return "redirect_vue:/about"; // vue前台路由，在axios中添加拦截器，拦截该串，解析/about路由
+    }
+
+    @RequestMapping("/finduserbyname")
+    @ResponseBody
+    public User findByUsername(@Param("username") String username) {
+        return userService.findByUsername(username);
     }
 }

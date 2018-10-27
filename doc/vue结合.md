@@ -22,3 +22,4 @@
     }
 ```
 vue前台路由，在axios中添加response拦截器，拦截该串，解析/about路由，由vue-router控制前台路由。
+[axios post请求需要用qs库处理请求参数](https://segmentfault.com/a/1190000012635783)

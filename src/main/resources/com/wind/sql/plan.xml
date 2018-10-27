@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.wind.dao.PlanDao">
+
+    <parameterMap id="parameterMap" type="com.wind.entity.Plan"/>
+    <resultMap id="resultMap" type="com.wind.entity.Plan">
+        <result property="date" column="date"/>
+        <result property="plan" column="plan"/>
+        <result property="id" column="id"/>
+        <result property="checked" column="checked" />
+    </resultMap>
+
+    <sql id="columnSql">
+        <trim suffixOverrides=",">
+            t.date,
+            t.plan,
+            t.id,
+            t.checked
+        </trim>
+    </sql>
+
+    <select id="getPlans" resultMap="resultMap">
+        SELECT * FROM plan
+    </select>
+
+    <insert id="insert">
+        INSERT INTO plan(date, plan, id, checked) VALUES(#{date}, #{plan}, #{id}, #{checked})
+    </insert>
+
+    <update id="update">
+        update plan set
+            <if test="date != null">date = #{date}</if>
+            <if test="checked != null">checked = #{checked}</if>
+            <if test="plan != null">plan = #{plan}</if>
+        where id = #{id}
+    </update>
+
+    <update id="updateById">
+        UPDATE plan SET
+            <if test="date != null">date = #{date}</if>
+            <if test="checked != null">checked = #{checked}</if>
+            <if test="plan != null">plan = #{plan}</if>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM plan WHERE id = #{id}
+    </delete>
+
+    <!--<select id="findByUsernameAndPwd" resultMap="resultMap">-->
+        <!--SELECT-->
+        <!--<include refid="columnSql"/>-->
+        <!--FROM test t-->
+        <!--WHERE t.username = #{username} and t.password = #{password}-->
+    <!--</select>-->
+
+    <!--<select id="getAll" resultMap="resultMap">-->
+        <!--SELECT * from test;-->
+    <!--</select>-->
+
+    <!--<select id="findByUsername" resultMap="resultMap">-->
+        <!--SELECT <include refid="columnSql"/>-->
+        <!--FROM test t-->
+        <!--WHERE t.username = #{username}-->
+    <!--</select>-->
+
+</mapper>

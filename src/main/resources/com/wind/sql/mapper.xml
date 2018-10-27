@@ -31,4 +31,10 @@
         SELECT * from test;
     </select>
 
+    <select id="findByUsername" resultMap="resultMap">
+        SELECT <include refid="columnSql"/>
+        FROM test t
+        WHERE t.username = #{username}
+    </select>
+
 </mapper>

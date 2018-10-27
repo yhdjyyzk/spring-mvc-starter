@@ -12,6 +12,14 @@
     <!-- 启用spring mvc 注解, 默认的注解映射的支持 -->
     <mvc:annotation-driven/>
 
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/plan/**"/>
+            <bean class="com.wind.interceptor.Interceptor1"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
     <context:component-scan base-package="com.wind"/>
 
